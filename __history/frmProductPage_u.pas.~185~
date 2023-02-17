@@ -1,0 +1,183 @@
+unit frmProductPage_u;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, JS, Web, WEBLib.Graphics, WEBLib.Controls,
+  WEBLib.Forms, WEBLib.Dialogs, Data.DB, WEBLib.CDS, Vcl.Controls,
+  WEBLib.StdCtrls, WEBLib.DBCtrls, Vcl.StdCtrls, WEBLib.DB, Vcl.Grids,
+  WEBLib.ExtCtrls, WEBLib.Grids, WEBLib.Lists;
+
+type
+  TForm1 = class(TWebForm)
+    WebClientConnection1: TWebClientConnection;
+    WebClientDataSet1: TWebClientDataSet;
+    WebClientDataSet1id: TIntegerField;
+    WebClientDataSet1name: TStringField;
+    WebClientDataSet1brand: TStringField;
+    WebClientDataSet1description: TStringField;
+    WebClientDataSet1product_code: TStringField;
+    WebClientDataSet1quantity: TIntegerField;
+    WebDataSource1: TWebDataSource;
+    WebDBGrid1: TWebDBGrid;
+    labelName: TWebLabel;
+    labelBrand: TWebLabel;
+    labelDescription: TWebLabel;
+    labelProductCode: TWebLabel;
+    labelQuantity: TWebLabel;
+    btnAddNewProduct: TWebButton;
+    edtName: TWebDBEdit;
+    edtBrand: TWebDBEdit;
+    edtDescription: TWebDBEdit;
+    edtProductCode: TWebDBEdit;
+    btnSubmit: TWebButton;
+    spnedtQuantity: TWebDBSpinEdit;
+    edtSearchEdit: TWebEdit;
+    btnSearchButton: TWebButton;
+    WebLabel1: TWebLabel;
+    WebLabel2: TWebLabel;
+    WebLabel3: TWebLabel;
+    WebLabel5: TWebLabel;
+    WebClientDataSet2: TWebClientDataSet;
+    WebClientConnection2: TWebClientConnection;
+    WebDataSource2: TWebDataSource;
+    WebClientDataSet2name: TStringField;
+    WebClientDataSet2brand: TStringField;
+    WebClientDataSet2description: TStringField;
+    WebClientDataSet2quantity: TIntegerField;
+    dbedtSearchName: TWebDBEdit;
+    dbedtSearchBrand: TWebDBEdit;
+    dbspnedtSearchQuantity: TWebDBSpinEdit;
+    dbmemoSearchDescription: TWebDBMemo;
+    btnCancel: TWebButton;
+    btnLowQuantity: TWebButton;
+    WebClientConnection3: TWebClientConnection;
+    WebClientDataSet3: TWebClientDataSet;
+    WebDataSource3: TWebDataSource;
+    WebClientDataSet3product_code: TStringField;
+    WebLabel4: TWebLabel;
+    WebDBGrid2: TWebDBGrid;
+    WebClientDataSet3quantity: TIntegerField;
+    WebClientConnection4: TWebClientConnection;
+    WebClientDataSet4: TWebClientDataSet;
+    WebDataSource4: TWebDataSource;
+    WebClientDataSet4name: TStringField;
+    WebClientDataSet4description: TStringField;
+    WebClientDataSet4product_code: TStringField;
+    WebClientDataSet4quantity: TIntegerField;
+    WebClientDataSet4brand: TStringField;
+    cmbboxBrandSearch: TWebComboBox;
+    btnBrandSearch: TWebButton;
+    WebDBGrid3: TWebDBGrid;
+    procedure btnAddNewProductClick(Sender: TObject);
+    procedure btnSubmitClick(Sender: TObject);
+    procedure btnSearchButtonClick(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnLowQuantityClick(Sender: TObject);
+    procedure btnBrandSearchClick(Sender: TObject);
+    procedure cmbboxBrandSearchChange(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+// This procedure enables the user to add new product information to the grid.
+  // First, we enable the submit button and the five edits, while disabling the AddNewProduct button.
+  // And we set the database to insert mode to allow new entries to be made.
+procedure TForm1.btnAddNewProductClick(Sender: TObject);
+begin
+  WebDBGrid1.Enabled := false;
+  WebClientDataSet1.Insert();
+  btnAddNewProduct.Enabled := false;
+  btnSubmit.Enabled := true;
+  btnCancel.Enabled := true;
+  edtName.Enabled := true;
+  edtBrand.Enabled := true;
+  edtDescription.Enabled := true;
+  edtProductCode.Enabled := true;
+  spnedtQuantity.Enabled := true;
+end;
+
+procedure TForm1.btnBrandSearchClick(Sender: TObject);
+begin
+  WebClientConnection4.URI := 'http://localhost:8001/products/brand/' + cmbboxBrandSearch.Text;
+  WebClientDataSet4.FieldDefs.Clear;
+  WebClientDataSet4.FieldDefs.Add('name',ftString,50);
+  WebClientDataSet4.FieldDefs.Add('brand',ftString,50);
+  WebClientDataSet4.FieldDefs.Add('description',ftString,255);
+  WebClientDataSet4.FieldDefs.Add('product_code',ftString,50);
+  WebClientDataSet4.FieldDefs.Add('quantity',ftInteger,0);
+  WebClientConnection4.Active := true;
+end;
+
+procedure TForm1.btnCancelClick(Sender: TObject);
+begin
+  WebClientDataSet1.Cancel();
+  btnAddNewProduct.Enabled := true;
+  btnSubmit.Enabled := false;
+  btnCancel.Enabled := false;
+  edtName.Enabled := false;
+  edtBrand.Enabled := false;
+  edtDescription.Enabled := false;
+  edtProductCode.Enabled := false;
+  spnedtQuantity.Enabled := false;
+end;
+
+procedure TForm1.btnLowQuantityClick(Sender: TObject);
+begin
+  WebClientConnection3.Active := true;
+  btnLowQuantity.Enabled := false;
+end;
+
+procedure TForm1.btnSearchButtonClick(Sender: TObject);
+begin
+  if edtSearchEdit.Text = '' then
+    begin
+    ShowMessage('Please Enter a valid Product Code.');
+    end
+  else
+  WebClientConnection2.URI := 'http://localhost:8001/products/product/' + edtSearchEdit.Text;
+  WebClientDataSet2.FieldDefs.Clear;
+  WebClientDataSet2.FieldDefs.Add('name',ftString,50);
+  WebClientDataSet2.FieldDefs.Add('brand',ftString,50);
+  WebClientDataSet2.FieldDefs.Add('description',ftString,255);
+  WebClientDataSet2.FieldDefs.Add('quantity',ftInteger,0);
+  WebClientConnection2.Active := true;
+end;
+
+// This function handles the submit button click event.
+  // Firstly, the button will post all the information from the edits into the database, and sets the database back into view mode.
+  // Then the edits will be cleared and disabled along with the submit button, until the user clicks on the Add New Product button again.
+procedure TForm1.btnSubmitClick(Sender: TObject);
+begin
+  WebClientDataSet1.Post();
+  edtName.Clear;
+  edtBrand.Clear;
+  edtDescription.Clear;
+  edtProductCode.Clear;
+  spnedtQuantity.Value := 0;
+  edtName.Enabled := false;
+  edtBrand.Enabled := false;
+  edtDescription.Enabled := false;
+  edtProductCode.Enabled := false;
+  spnedtQuantity.Enabled := false;
+  btnSubmit.Enabled := false;
+  btnCancel.Enabled := false;
+  btnAddNewProduct.Enabled := true;
+  WebClientDataSet1.ApplyUpdates();
+end;
+
+procedure TForm1.cmbboxBrandSearchChange(Sender: TObject);
+begin
+  btnBrandSearch.Enabled := true;
+end;
+
+end.
