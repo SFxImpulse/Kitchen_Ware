@@ -148,10 +148,6 @@ begin
   WebClientDataSet2.FieldDefs.Add('description',ftString,255);
   WebClientDataSet2.FieldDefs.Add('quantity',ftInteger,0);
   WebClientConnection2.Active := true;
-  if dbedtSearchName.Text = '' then
-    begin
-    ShowMessage('Please Enter a valid Product Code.');
-    end;
 end;
 
 // This function handles the submit button click event.

@@ -130,20 +130,17 @@ begin
   edtDescription.Enabled := false;
   edtProductCode.Enabled := false;
   spnedtQuantity.Enabled := false;
+  WebDBGrid1.Enabled := true;
 end;
 
 procedure TForm1.btnLowQuantityClick(Sender: TObject);
 begin
   WebClientConnection3.Active := true;
+  btnLowQuantity.Enabled := false;
 end;
 
 procedure TForm1.btnSearchButtonClick(Sender: TObject);
 begin
-  if edtSearchEdit.Text = '' then
-    begin
-    ShowMessage('Please Enter a valid Product Code.');
-    end
-  else
   WebClientConnection2.URI := 'http://localhost:8001/products/product/' + edtSearchEdit.Text;
   WebClientDataSet2.FieldDefs.Clear;
   WebClientDataSet2.FieldDefs.Add('name',ftString,50);
@@ -173,6 +170,7 @@ begin
   btnCancel.Enabled := false;
   btnAddNewProduct.Enabled := true;
   WebClientDataSet1.ApplyUpdates();
+  WebDBGrid1.Enabled := true;
 end;
 
 procedure TForm1.cmbboxBrandSearchChange(Sender: TObject);
@@ -182,6 +180,11 @@ end;
 
 procedure TForm1.edtSearchEditChange(Sender: TObject);
 begin
+  if edtSearchEdit.Text = '' then
+    begin
+    btnSearchButton.Enabled := false;
+    end
+  else
   btnSearchButton.Enabled := true;
 end;
 

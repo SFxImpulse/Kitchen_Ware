@@ -4,8 +4,8 @@ object Form1: TForm1
   Caption = 'Kitchen Ware'
   ElementFont = efCSS
   object labelName: TWebLabel
-    Left = 88
-    Top = 75
+    Left = 488
+    Top = 123
     Width = 27
     Height = 13
     Caption = 'Name'
@@ -13,8 +13,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object labelBrand: TWebLabel
-    Left = 86
-    Top = 107
+    Left = 486
+    Top = 155
     Width = 28
     Height = 13
     Caption = 'Brand'
@@ -22,8 +22,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object labelDescription: TWebLabel
-    Left = 62
-    Top = 139
+    Left = 462
+    Top = 187
     Width = 53
     Height = 13
     Caption = 'Description'
@@ -31,8 +31,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object labelProductCode: TWebLabel
-    Left = 48
-    Top = 171
+    Left = 448
+    Top = 219
     Width = 65
     Height = 13
     Caption = 'Product Code'
@@ -40,8 +40,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object labelQuantity: TWebLabel
-    Left = 73
-    Top = 203
+    Left = 473
+    Top = 251
     Width = 42
     Height = 13
     Caption = 'Quantity'
@@ -49,8 +49,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object WebLabel1: TWebLabel
-    Left = 306
-    Top = 107
+    Left = 706
+    Top = 155
     Width = 27
     Height = 13
     Caption = 'Name'
@@ -58,8 +58,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object WebLabel2: TWebLabel
-    Left = 305
-    Top = 139
+    Left = 705
+    Top = 187
     Width = 28
     Height = 13
     Caption = 'Brand'
@@ -67,8 +67,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object WebLabel3: TWebLabel
-    Left = 280
-    Top = 218
+    Left = 680
+    Top = 266
     Width = 53
     Height = 13
     Caption = 'Description'
@@ -76,8 +76,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object WebLabel5: TWebLabel
-    Left = 291
-    Top = 170
+    Left = 691
+    Top = 218
     Width = 42
     Height = 13
     Caption = 'Quantity'
@@ -85,8 +85,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object WebLabel4: TWebLabel
-    Left = 524
-    Top = 62
+    Left = 924
+    Top = 110
     Width = 70
     Height = 13
     Caption = 'Product Codes'
@@ -94,8 +94,8 @@ object Form1: TForm1
     WidthPercent = 100.000000000000000000
   end
   object WebDBGrid1: TWebDBGrid
-    Left = 24
-    Top = 289
+    Left = 424
+    Top = 337
     Width = 1065
     Height = 377
     Columns = <
@@ -139,8 +139,8 @@ object Form1: TForm1
       128)
   end
   object btnAddNewProduct: TWebButton
-    Left = 48
-    Top = 24
+    Left = 448
+    Top = 72
     Width = 217
     Height = 25
     Caption = 'Add New Product'
@@ -150,8 +150,8 @@ object Form1: TForm1
     OnClick = btnAddNewProductClick
   end
   object edtName: TWebDBEdit
-    Left = 144
-    Top = 72
+    Left = 544
+    Top = 120
     Width = 121
     Height = 22
     ChildOrder = 7
@@ -162,8 +162,8 @@ object Form1: TForm1
     DataSource = WebDataSource1
   end
   object edtBrand: TWebDBEdit
-    Left = 144
-    Top = 104
+    Left = 544
+    Top = 152
     Width = 121
     Height = 22
     ChildOrder = 8
@@ -174,8 +174,8 @@ object Form1: TForm1
     DataSource = WebDataSource1
   end
   object edtDescription: TWebDBEdit
-    Left = 144
-    Top = 136
+    Left = 544
+    Top = 184
     Width = 121
     Height = 22
     ChildOrder = 9
@@ -186,8 +186,8 @@ object Form1: TForm1
     DataSource = WebDataSource1
   end
   object edtProductCode: TWebDBEdit
-    Left = 144
-    Top = 168
+    Left = 544
+    Top = 216
     Width = 121
     Height = 22
     ChildOrder = 10
@@ -198,8 +198,8 @@ object Form1: TForm1
     DataSource = WebDataSource1
   end
   object btnSubmit: TWebButton
-    Left = 48
-    Top = 240
+    Left = 448
+    Top = 288
     Width = 97
     Height = 25
     Caption = 'Submit'
@@ -210,8 +210,8 @@ object Form1: TForm1
     OnClick = btnSubmitClick
   end
   object spnedtQuantity: TWebDBSpinEdit
-    Left = 144
-    Top = 200
+    Left = 544
+    Top = 248
     Width = 121
     Height = 22
     AutoSize = False
@@ -228,9 +228,9 @@ object Form1: TForm1
     DataSource = WebDataSource1
   end
   object edtSearchEdit: TWebEdit
-    Left = 327
-    Top = 24
-    Width = 121
+    Left = 712
+    Top = 72
+    Width = 136
     Height = 26
     ChildOrder = 13
     HeightPercent = 100.000000000000000000
@@ -239,9 +239,9 @@ object Form1: TForm1
     OnChange = edtSearchEditChange
   end
   object btnSearchButton: TWebButton
-    Left = 327
-    Top = 56
-    Width = 121
+    Left = 712
+    Top = 104
+    Width = 136
     Height = 28
     Caption = 'Search'
     ChildOrder = 14
@@ -251,8 +251,8 @@ object Form1: TForm1
     OnClick = btnSearchButtonClick
   end
   object dbedtSearchName: TWebDBEdit
-    Left = 352
-    Top = 104
+    Left = 752
+    Top = 152
     Width = 96
     Height = 26
     ChildOrder = 20
@@ -262,8 +262,8 @@ object Form1: TForm1
     DataSource = WebDataSource2
   end
   object dbedtSearchBrand: TWebDBEdit
-    Left = 352
-    Top = 136
+    Left = 752
+    Top = 184
     Width = 96
     Height = 25
     ChildOrder = 22
@@ -273,8 +273,8 @@ object Form1: TForm1
     DataSource = WebDataSource2
   end
   object dbspnedtSearchQuantity: TWebDBSpinEdit
-    Left = 352
-    Top = 167
+    Left = 752
+    Top = 215
     Width = 96
     Height = 25
     AutoSize = False
@@ -290,8 +290,8 @@ object Form1: TForm1
     DataSource = WebDataSource2
   end
   object dbmemoSearchDescription: TWebDBMemo
-    Left = 352
-    Top = 215
+    Left = 752
+    Top = 263
     Width = 96
     Height = 50
     AutoSize = False
@@ -306,8 +306,8 @@ object Form1: TForm1
     DataSource = WebDataSource2
   end
   object btnCancel: TWebButton
-    Left = 169
-    Top = 240
+    Left = 569
+    Top = 288
     Width = 96
     Height = 25
     Caption = 'Cancel'
@@ -318,8 +318,8 @@ object Form1: TForm1
     OnClick = btnCancelClick
   end
   object btnLowQuantity: TWebButton
-    Left = 496
-    Top = 24
+    Left = 896
+    Top = 72
     Width = 129
     Height = 25
     Caption = 'Check for Low Quantity'
@@ -329,8 +329,8 @@ object Form1: TForm1
     OnClick = btnLowQuantityClick
   end
   object WebDBGrid2: TWebDBGrid
-    Left = 480
-    Top = 87
+    Left = 880
+    Top = 135
     Width = 161
     Height = 178
     Columns = <
@@ -356,8 +356,8 @@ object Form1: TForm1
       47)
   end
   object cmbboxBrandSearch: TWebComboBox
-    Left = 816
-    Top = 24
+    Left = 1216
+    Top = 72
     Width = 129
     Height = 21
     HeightPercent = 100.000000000000000000
@@ -371,8 +371,8 @@ object Form1: TForm1
       'Cookery')
   end
   object btnBrandSearch: TWebButton
-    Left = 816
-    Top = 55
+    Left = 1216
+    Top = 103
     Width = 129
     Height = 29
     Caption = 'Search'
@@ -383,8 +383,8 @@ object Form1: TForm1
     OnClick = btnBrandSearchClick
   end
   object WebDBGrid3: TWebDBGrid
-    Left = 680
-    Top = 102
+    Left = 1080
+    Top = 150
     Width = 409
     Height = 163
     Columns = <
